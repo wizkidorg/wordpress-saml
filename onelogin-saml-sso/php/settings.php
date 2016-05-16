@@ -31,7 +31,7 @@ $posible_requestedauthncontext_values = array(
 
 $opt['strict'] = get_option('onelogin_saml_advanced_settings_strict_mode', 'on');
 $opt['debug'] = get_option('onelogin_saml_advanced_settings_debug', 'on');
-$opt['sp_entity_id'] = get_option('onelogin_saml_advanced_settings_sp_entity_id', 'php-saml');
+$opt['sp_entity_id'] = get_option('onelogin_saml_advanced_settings_sp_entity_id', get_site_url());  // entityID based on site URL
 
 $opt['nameIdEncrypted'] = get_option('onelogin_saml_advanced_settings_nameid_encrypted', false);
 $opt['authnRequestsSigned'] = get_option('onelogin_saml_advanced_settings_authn_request_signed', false);
@@ -65,7 +65,7 @@ $settings = array (
     'debug' => $opt['debug'] == 'on'? true : false,
 
     'sp' => array (
-        'entityId' => (!empty($opt['sp_entity_id'])? $opt['sp_entity_id'] : 'php-saml'),
+        'entityId' => (!empty($opt['sp_entity_id'])? $opt['sp_entity_id'] : get_site_url()),    // entityID based on site URL
         'assertionConsumerService' => array (
             'url' => $acs_endpoint
         ),

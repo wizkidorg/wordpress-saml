@@ -147,10 +147,10 @@ function saml_acs() {
 		$mailMapping =  get_option('onelogin_saml_attr_mapping_mail'); 
 
 		if (!empty($usernameMapping) && isset($attrs[$usernameMapping]) && !empty($attrs[$usernameMapping][0])){
-			$username = $attrs[$usernameMapping][0];
+			$username = strtolower($attrs[$usernameMapping][0]);
 		}
 		if (!empty($mailMapping) && isset($attrs[$mailMapping])  && !empty($attrs[$mailMapping][0])){
-			$email = $attrs[$mailMapping][0];
+			$email = strtolower($attrs[$mailMapping][0]);
 		}
 	}
 

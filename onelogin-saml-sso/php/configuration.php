@@ -39,6 +39,10 @@ require_once (dirname(__FILE__) . "/lib/Saml2/Constants.php");
 	}
 
 	function onelogin_saml_configuration() {
+
+        // If not a super-admin (network admin) or admin in single site mode don't add menu for configuration. (Add line below)
+        if ( !is_super_admin() ) { return; }
+
 		$current_screen = add_submenu_page( 'options-general.php', 'SSO/SAML Settings', 'SSO/SAML Settings', 'manage_options', 'onelogin_saml_configuration', 'onelogin_saml_configuration_render');
 
 		$helpText = '<p>' . __('This plugin provides single sign-on via SAML and gives users one-click access to their WordPress accounts from identity providers like OneLogin', 'onelogin-saml-sso') . '</p>' .
@@ -370,7 +374,7 @@ require_once (dirname(__FILE__) . "/lib/Saml2/Constants.php");
 	function plugin_setting_string_onelogin_saml_advanced_settings_sp_entity_id() {
 		echo '<input type="text" name="onelogin_saml_advanced_settings_sp_entity_id" id="onelogin_saml_advanced_settings_sp_entity_id"
 			  value= "'.get_option('onelogin_saml_advanced_settings_sp_entity_id').'" size="80">'.
-			  '<p class="description">'.__("Set the Entity ID for the Service Provider. If not provided, 'php-saml' will be used.", 'onelogin-saml-sso').'</p>';
+			  '<p class="description">'.__("Set the Entity ID for the Service Provider. If not provided, '".get_site_url()."' will be used.", 'onelogin-saml-sso').'</p>';  // entityID based on site URL
 	}
 
 

@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/OneLogin-SAML-SSO.phpproj
+/OneLogin-SAML-SSO.sln
+/.vs/OneLogin-SAML-SSO/v14/.suo
